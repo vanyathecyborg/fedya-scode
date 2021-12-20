@@ -1,0 +1,29 @@
+export const environment = {
+  production: true,
+  enableLoggerMiddleware: false,
+
+  fnsRegEnabled: '#{clientFront:fnsRegEnabled}',
+
+  useCryptoProDevCerts: false,
+
+  analytics: {
+    google: {
+      enabled: true,
+      trackingId: 'GTM-NR7MRW',
+    },
+  },
+
+  adfs: {
+    enabled: '#{clientFront:adfsEnabled}', // boolean
+    baseUrl: 'https://sts2.x5.ru/adfs',
+  },
+
+  useCryptoProDevCerts: '#{clientFront:useCryptoProDevCerts}',
+
+  api: {
+    clientHost: '#{clientFront:clientHost}',
+    reportsHost: '#{clientFront:reportsHost}',
+    kktRegHost: '#{clientFront:kktRegHost}',
+    receiptHost: '#{clientFront:receiptHost}',
+  },
+};

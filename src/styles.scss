@@ -1,0 +1,368 @@
+@import "/assets/scss/mixins";
+@import "/assets/scss/reset";
+@import "/assets/scss/clearfix";
+@import "/assets/scss/fonts";
+@import "/assets/scss/grid";
+@import "/assets/scss/ui";
+@import "/assets/scss/sprite";
+@import "/assets/scss/var";
+@import "/assets/scss/helpers";
+
+//icons
+.icon {
+  display: inline-block;
+  &-bar {
+    position: relative;
+    height: 2px;
+    vertical-align: middle;
+    width: 22px;
+    background: #000000;
+    margin: 8px 0;
+    &:before, &:after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: #000000;
+      left: 0;
+    }
+    &:before {
+      top: -8px;
+    }
+    &:after {
+      bottom: -8px;
+    }
+  }
+}
+
+@keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(359deg);
+    transform: rotate(359deg);
+  }
+}
+
+@include sprites($spritesheet-sprites);
+//#icons
+
+//base
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  min-width: 320px;
+  font-family: $font;
+  font-weight: 400;
+  font-size: 100%;
+  line-height: 1.2;
+}
+
+#app {
+  height: 100%;
+}
+
+.mock-header {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  border-top: 45px solid black;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.layout-header {
+  min-height: 100%;
+  height: auto;
+  padding-bottom: 55px;
+  @include media('tablet-wide'){
+    padding-bottom: 160px;
+  }
+}
+
+a {
+  transition: all, 0.3s ease;
+  text-decoration: none;
+  span {
+    display: inline;
+    border-bottom: 1px solid;
+    line-height: 1.2;
+  }
+}
+
+.text {
+  &-left {
+    text-align: left;
+  }
+  &-right {
+    text-align: right;
+  }
+  &-center {
+    text-align: center;
+  }
+}
+//#base
+
+.tplan-select-container {
+  @include media('tablet') {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.tplan-accent-radio{
+  font-size: 1.15rem;
+  font-weight: 600;
+  line-height: 1.23rem;
+}
+
+.tplan-select {
+  margin: 25px 10px;
+  text-align: center;
+  border-radius: 5px;
+  height: 140px;
+  width: 100%;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: center;
+  background: #ffdc7c;
+  cursor: pointer;
+  position: relative;
+  border: 1px solid transparent;
+  &:before, &:after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    left: 50%;
+    top: 0;
+  }
+  &:before {
+    border: 1px solid #b8b7c0;
+    box-shadow: inset 0 2px 4px rgba(#b8b7c0, 1), 0 2px 5px rgba(#000, 0.7);
+    background: #fff;
+    width: 36px;
+    height: 36px;
+    top: -18px;
+    margin-left: -18px;
+  }
+  &:after {
+    background: #eab41f;
+    width: 14px;
+    height: 14px;
+    margin-left: -6px;
+    top: -6px;
+    opacity: 0;
+  }
+  &.selected {
+    background: #fff;
+    border: 1px solid #b8b7c0;
+    box-shadow: 0 11px 21px rgba(0,0,0,0.2);
+    @include media('tablet') {
+      margin:15px 10px;
+      height: 160px;
+    }
+    &:after {
+      opacity: 1;
+    }
+  }
+  h3 {
+    font-family: $subfont;
+    @include rem(20);
+    margin: 0;
+  }
+
+  &.akcent-no{ //temp swich off
+
+
+    padding-top: 5px;
+    h3{
+      @include rem(24);
+      margin-top: -1px;
+      margin-bottom: -7px;
+      font-weight: 600;
+    }
+  }
+}
+
+// section
+@import "/assets/scss/section";
+// #section
+
+// panel
+@import "/assets/scss/panel";
+// #panel
+
+// sign-up
+@import "/assets/scss/sign-up";
+// #sign-up
+
+#tplan{
+  background: #fff;
+  .ui-dropdown-items-wrapper{
+    width: 200px!important;
+  }
+}
+#doctype{
+  background: #fff;
+  .ui-dropdown-items-wrapper{
+    width: 300px!important;
+  }
+  .ui-dropdown-label{
+    text-overflow: ellipsis;
+    width: 120px;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+}
+.multiline li{
+  height: inherit!important;
+  line-height: 1.2rem;
+  border-radius: 0;
+}
+
+.check-container {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 12px;
+  padding-left: 6px;
+
+  &__btn {
+    display: flex;
+    justify-content: center;
+    flex-grow: 1;
+    align-items: flex-end;
+    padding-bottom: 40px;
+  }
+
+  .reset-btn{
+    width: 20px !important;
+    height: 20px;
+  }
+
+  &-dialog{
+    z-index: 1;
+    .ui-dialog-titlebar-close{
+      color:#fff!important;
+    }
+    .ui-dialog-titlebar-close:after{
+      background: #fff!important;
+    }
+    .ui-dialog-titlebar-close:before{
+      background: #fff!important;
+    }
+    .ui-dialog-titlebar{
+      background: none;
+    }
+    .ui-widget-content{
+      background: none!important;
+      border-radius: 0;
+      border:none;
+    }
+    .ui-widget-content.ui-dialog.ui-shadow{
+      box-shadow: none;
+    }
+    .ui-dialog.ui-widget .ui-dialog-titlebar{
+      padding: 20px;
+    }
+  }
+}
+.bg{
+  width: 100%;
+  position: fixed;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  background: rgba(0,0,0,0.3);
+}
+.hidden{
+  display: none;
+}
+
+.disabled {
+  .ui-state-disabled {
+    opacity: 1!important;
+  }
+  .ui-form-control:disabled{
+    opacity: 1!important;
+    color: #282828!important;
+  }
+}
+
+#cadesplugin_object {
+  display: none;
+}
+.underline{
+  border-bottom: 1px solid!important;
+}
+
+.packet{
+  .ui-dialog-content{
+    overflow: inherit!important;
+    min-height: 300px!important;
+    //
+    @include media('phone', 'max') {
+      //min-height: 500px!important;
+      overflow-y: auto!important;
+    }
+    @media (max-height: 734px){
+      //min-height: 500px!important;
+      overflow-y: auto!important;
+    }
+
+  }
+
+  button{
+    margin-bottom: 10px;
+  }
+}
+h1,h2{
+  @include media('phone', 'max') {
+    text-align: center!important;
+  }
+}
+
+.kkt-controls{
+  @include media('phone', 'max') {
+    text-align: left!important;
+    margin-bottom: 30px;
+    a span{
+      font-size: 1.0rem;;
+    }
+  }
+}
+
+.check-container-dialog{
+  .ui-widget-content{
+    background: #fff !important;
+    border-radius:15px;
+    padding-bottom: 35px;
+    max-height: 735px;
+  }
+}
+.check-container-dialog {
+  .ui-dialog.ui-widget .ui-dialog-titlebar {
+    padding: 15px;
+  }
+  .ui-btn_default{
+    position: absolute;
+    bottom: 50px;
+    right: 50px;
+  }
+}
+.ui-widget-content.ui-dialog .ui-dialog-content{
+  padding: 0 40px;
+}
+.ui-dialog .ui-dialog-content{
+  overflow: visible;
+}
